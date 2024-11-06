@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { LucideMenu, LucideX } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -21,7 +21,6 @@ export function Navbar() {
   }, [scrolled])
 
   useEffect(() => {
-    // Prevent scrolling when mobile menu is open
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden'
     } else {
@@ -30,51 +29,59 @@ export function Navbar() {
   }, [mobileMenuOpen])
 
   const navItems = [
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Testimonials', href: '/testimonials' },
-    { name: 'Contact', href: '/contact' }
+    { name: 'Our Services', href: '#services' },
+    { name: 'Testimonials', href: '#testimonials' },
+    { name: 'Contact', href: '#contact' }
   ]
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled ? 'bg-black shadow-lg' : 'bg-transparent'
+      scrolled ? 'glass-nav' : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <Link 
-            href="/" 
-            className="text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#BF953F] to-[#FCF6BA] hover:from-[#FCF6BA] hover:to-[#BF953F] transition-all duration-300"
-            style={{ fontFamily: 'Playfair Display' }}
+        <div className="flex items-center justify-between h-24">
+          <a 
+            href="#"
+            className={`text-3xl font-bold tracking-wide transition-colors duration-300 ${
+              scrolled ? 'text-primary' : 'text-white'
+            }`}
+            style={{ fontFamily: 'Bodoni Moda, serif', textShadow: scrolled ? 'none' : '0 2px 4px rgba(0, 0, 0, 0.1)' }}
           >
-            C De Cerff Inc.
-          </Link>
+            G Van Zyl Attorneys
+          </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-12">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
-              <Link
+              <a
                 key={item.name}
                 href={item.href}
-                className="text-white hover:text-[#BF953F] transition-colors duration-300 text-sm uppercase tracking-wider relative group"
-                style={{ fontFamily: 'Cormorant Garamond' }}
+                className="nav-button"
+                onClick={(e) => {
+                  e.preventDefault()
+                  const element = document.querySelector(item.href)
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#BF953F] transition-all duration-300 group-hover:w-full"></span>
-              </Link>
+              </a>
             ))}
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-[#BF953F] p-2 hover:bg-white/10 rounded-full transition-colors duration-300"
+            className={`md:hidden p-2 rounded-lg transition-colors duration-300 ${
+              scrolled ? 'text-primary hover:bg-primary/5' : 'text-white hover:bg-white/10'
+            }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
             {mobileMenuOpen ? (
-              <LucideX className="h-6 w-6" />
+              <X className="h-6 w-6" />
             ) : (
-              <LucideMenu className="h-6 w-6" />
+              <Menu className="h-6 w-6" />
             )}
           </button>
         </div>
@@ -82,33 +89,39 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-y-0 right-0 w-[80%] max-w-sm bg-black shadow-2xl transition-all duration-500 ease-in-out transform z-50 ${
+        className={`fixed inset-y-0 right-0 w-[80%] max-w-sm glass-nav transition-all duration-500 ease-in-out transform z-50 ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         } md:hidden`}
       >
         <div className="flex flex-col h-full pt-24 pb-6">
           <div className="flex-1 px-4">
             {navItems.map((item, index) => (
-              <Link
+              <a
                 key={item.name}
                 href={item.href}
-                className="block w-full text-lg text-white hover:text-[#BF953F] transition-all duration-300 py-4 px-4 mb-2 rounded-lg bg-black hover:bg-[#1A1A1A] active:bg-[#262626]"
-                onClick={() => setMobileMenuOpen(false)}
+                className="block w-full text-lg text-primary hover:text-primary/80 transition-all duration-300 py-4 px-4 mb-4 rounded-lg hover:bg-primary/5 elegant-prose"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setMobileMenuOpen(false)
+                  const element = document.querySelector(item.href)
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
                 style={{
-                  fontFamily: 'Cormorant Garamond',
                   animation: mobileMenuOpen ? `slideIn 0.5s ease forwards ${index * 0.1}s` : 'none',
                   opacity: 0,
                 }}
               >
                 {item.name}
-              </Link>
+              </a>
             ))}
           </div>
           
           {/* Mobile Menu Footer */}
-          <div className="px-4 py-6 border-t border-[#BF953F]/20 bg-black">
-            <p className="text-sm text-white/80 text-center" style={{ fontFamily: 'Cormorant Garamond' }}>
-              © 2024 C De Cerff Inc.
+          <div className="px-4 py-6 border-t border-primary/10">
+            <p className="text-sm text-muted-foreground text-center elegant-prose">
+              © 2024 G Van Zyl Attorneys
             </p>
           </div>
         </div>
@@ -116,7 +129,7 @@ export function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-black/70 md:hidden transition-opacity duration-500 ${
+        className={`fixed inset-0 bg-black/20 backdrop-blur-sm md:hidden transition-opacity duration-500 ${
           mobileMenuOpen ? 'opacity-100 z-40' : 'opacity-0 pointer-events-none'
         }`}
         onClick={() => setMobileMenuOpen(false)}
