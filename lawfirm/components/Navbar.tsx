@@ -89,17 +89,18 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-y-0 right-0 w-[80%] max-w-sm glass-nav transition-all duration-500 ease-in-out transform z-50 ${
+        className={`fixed inset-y-0 right-0 w-[80%] max-w-sm bg-white border-l border-gray-200 shadow-xl transition-all duration-500 ease-in-out transform z-[60] ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         } md:hidden`}
+        style={{ backgroundColor: 'white' }}
       >
-        <div className="flex flex-col h-full pt-24 pb-6">
-          <div className="flex-1 px-4">
+        <div className="flex flex-col h-full pt-24 pb-6 bg-white">
+          <div className="flex-1 px-4 bg-white">
             {navItems.map((item, index) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="block w-full text-lg text-primary hover:text-primary/80 transition-all duration-300 py-4 px-4 mb-4 rounded-lg hover:bg-primary/5 elegant-prose"
+                className="block w-full text-lg text-primary hover:text-primary/80 transition-all duration-300 py-4 px-4 mb-4 rounded-lg hover:bg-primary/5 elegant-prose bg-white"
                 onClick={(e) => {
                   e.preventDefault()
                   setMobileMenuOpen(false)
@@ -111,6 +112,7 @@ export function Navbar() {
                 style={{
                   animation: mobileMenuOpen ? `slideIn 0.5s ease forwards ${index * 0.1}s` : 'none',
                   opacity: 0,
+                  backgroundColor: 'white',
                 }}
               >
                 {item.name}
@@ -119,7 +121,7 @@ export function Navbar() {
           </div>
           
           {/* Mobile Menu Footer */}
-          <div className="px-4 py-6 border-t border-primary/10">
+          <div className="px-4 py-6 border-t border-primary/10 bg-white">
             <p className="text-sm text-muted-foreground text-center elegant-prose">
               © 2024 G Van Zyl Attorneys
             </p>
@@ -130,7 +132,7 @@ export function Navbar() {
       {/* Mobile Menu Overlay */}
       <div
         className={`fixed inset-0 bg-black/20 backdrop-blur-sm md:hidden transition-opacity duration-500 ${
-          mobileMenuOpen ? 'opacity-100 z-40' : 'opacity-0 pointer-events-none'
+          mobileMenuOpen ? 'opacity-100 z-50' : 'opacity-0 pointer-events-none'
         }`}
         onClick={() => setMobileMenuOpen(false)}
       />
