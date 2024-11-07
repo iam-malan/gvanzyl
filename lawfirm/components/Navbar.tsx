@@ -47,7 +47,7 @@ export function Navbar() {
             }`}
             style={{ fontFamily: 'Bodoni Moda, serif', textShadow: scrolled ? 'none' : '0 2px 4px rgba(0, 0, 0, 0.1)' }}
           >
-            G Van Zyl Attorneys
+            Template Attorneys
           </a>
 
           {/* Desktop Navigation */}
@@ -123,7 +123,7 @@ export function Navbar() {
           {/* Mobile Menu Footer */}
           <div className="px-4 py-6 border-t border-primary/10 bg-white">
             <p className="text-sm text-muted-foreground text-center elegant-prose">
-              © 2024 G Van Zyl Attorneys
+              © 2024 Template Attorneys
             </p>
           </div>
         </div>

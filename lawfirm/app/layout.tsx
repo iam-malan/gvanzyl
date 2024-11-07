@@ -11,7 +11,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'G Van Zyl Attorneys | Cape Town Legal Services',
+  title: 'Template Attorneys | Cape Town Legal Services',
   description: 'Expert legal services in Cape Town, specializing in corporate, family, and criminal law with over two decades of experience.',
   icons: {
     icon: '/favicon.ico',
@@ -20,9 +20,9 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_ZA',
     url: 'https://gvanzyl.co.za',
-    title: 'G Van Zyl Attorneys | Cape Town Legal Services',
+    title: 'Template Attorneys | Cape Town Legal Services',
     description: 'Expert legal services in Cape Town, specializing in corporate, family, and criminal law with over two decades of experience.',
-    siteName: 'G Van Zyl Attorneys',
+    siteName: 'Template Attorneys',
   },
   robots: {
     index: true,
