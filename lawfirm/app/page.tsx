@@ -78,9 +78,9 @@ export default function HomePage() {
               </a>
             </div>
             <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-white reveal elegant-prose">
-              <a href="mailto:info@gvanzyl.co.za" className="flex items-center gap-2 hover:text-secondary transition-colors">
+              <a href="mailto:info@templateattorneys.co.za" className="flex items-center gap-2 hover:text-secondary transition-colors">
                 <Mail className="h-5 w-5" />
-                <span>info@gvanzyl.co.za</span>
+                <span>info@templateattorneys.co.za</span>
               </a>
             </div>
           </div>
@@ -295,8 +295,8 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-primary mb-1">Email</h4>
-                    <a href="mailto:info@gvanzyl.co.za" className="text-muted-foreground hover:text-primary transition-colors break-all">
-                      info@gvanzyl.co.za
+                    <a href="mailto:info@templateattorneys.co.za" className="text-muted-foreground hover:text-primary transition-colors break-all">
+                      info@templateattorneys.co.za
                     </a>
                   </div>
                 </div>
